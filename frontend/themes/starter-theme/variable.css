@@ -2,5 +2,14 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    box-style: none;
+}
+
+:root{
+    --dark-blue: #020227cb;
+    --mid-blue: #020231c5;
+    --white: #fbfbfb;
+}
+
+body{
+    background: var(--white);
 }
