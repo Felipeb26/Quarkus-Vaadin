@@ -25,10 +25,9 @@ public class MainView extends VerticalLayout {
 
     @Inject
     GreetService greetService;
-    private final HeaderComp headerComp;
 
     public MainView() {
-        headerComp = new HeaderComp();
+        HeaderComp headerComp = new HeaderComp();
 
         Select<String> select = new Select<>();
         select.setLabel("Contato");
