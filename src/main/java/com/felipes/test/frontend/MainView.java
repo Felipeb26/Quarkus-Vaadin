@@ -1,14 +1,15 @@
-package com.felipes.test;
+package com.felipes.test.frontend;
 
+import com.felipes.test.frontend.components.HeaderComp;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.datepicker.DatePicker;
-import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import jakarta.inject.Inject;
 
@@ -19,13 +20,15 @@ import java.util.List;
  * The main view contains a button and a click listener.
  */
 @Route("")
+@PageTitle("home")
 public class MainView extends VerticalLayout {
 
     @Inject
     GreetService greetService;
+    private final HeaderComp headerComp;
 
     public MainView() {
-        Header header = new Header();
+        headerComp = new HeaderComp();
 
         Select<String> select = new Select<>();
         select.setLabel("Contato");
@@ -55,6 +58,6 @@ public class MainView extends VerticalLayout {
         // shared-styles.css.☺
         addClassName("centered-content");
 
-        add(select,datePicker,textField, button);
+        add(headerComp, select,datePicker,textField, button);
     }
 }

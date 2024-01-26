@@ -5,6 +5,12 @@
 */
 
 /* Example: CSS class name to center align the content . */
+@import url("./variable.css");
+
+header{
+    background: red;
+}
+
 .centered-content {
     margin: 0 auto;
     max-width: 250px;

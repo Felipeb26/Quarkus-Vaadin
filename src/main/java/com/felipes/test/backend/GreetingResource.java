@@ -1,4 +1,4 @@
-package com.felipes;
+package com.felipes.test.backend;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

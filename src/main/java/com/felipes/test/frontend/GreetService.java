@@ -1,4 +1,4 @@
-package com.felipes.test;
+package com.felipes.test.frontend;
 
 import jakarta.enterprise.context.Dependent;
 
