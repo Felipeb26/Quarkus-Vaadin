@@ -1,5 +1,7 @@
 package com.felipes.test.frontend.views;
 
+import com.felipes.test.backend.domain.entity.ContatoEntity;
+import com.felipes.test.backend.service.ContatoService;
 import com.felipes.test.frontend.GreetService;
 import com.felipes.test.frontend.HeaderLayout;
 import com.felipes.test.frontend.components.HorizontalCard;
@@ -22,16 +24,16 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * The main view contains a button and a click listener.
- */
+
 @Route(value = "", layout = HeaderLayout.class)
 @PageTitle("home")
 public class MainView extends VerticalLayout {
 
     @Inject
     private transient GreetService greetService;
-    private HorizontalCard horizontalCard = new HorizontalCard();
+
+    @Inject
+    private ContatoService contatoService;
 
     public MainView() {
         addClassName("main");
@@ -39,9 +41,8 @@ public class MainView extends VerticalLayout {
 
         Select<String> contato = new Select<>();
         contato.setLabel("Contato");
-        List<String> names = List.of("felipe", "felip", "feli", "felip", "felipes");
         contato.setEmptySelectionAllowed(true);
-        contato.setItems(names);
+        contato.setItems(contatos().orElse(List.of("teste")));
 
         Select<String> agenciaConta = new Select<>();
         agenciaConta.setLabel("Agencia - Conta");
@@ -64,18 +65,19 @@ public class MainView extends VerticalLayout {
         DatePicker datePicker = new DatePicker("Data trasferencia", LocalDate.now());
         datePicker.setMin(LocalDate.now());
 
+        HorizontalCard horizontalCard = new HorizontalCard();
         horizontalCard.add(contato, agenciaConta, datePicker, valorTransferencia, transferirBtn);
         horizontalCard.setFlexGrow(1, contato, agenciaConta, datePicker, valorTransferencia, transferirBtn);
         add(horizontalCard);
     }
 
-    private HorizontalCard infoCard(Object ...params) {
+    private HorizontalCard infoCard(Object... params) {
         HorizontalCard infoCard = new HorizontalCard();
 
-        String resume = "O valor de R$ %s com taxa de %s\n".formatted(Optional.of(params[0]).orElse(" "), Optional.of(params[1]).orElse(" "))+
-                "da conta s\n"+
-                "será enviado para (o/a) %s conta %s\n".formatted(Optional.of(params[2]).orElse(" "), Optional.of(params[3]).orElse(" "))+
-                "no inicio do dia %s\n".formatted(Optional.of(params[4]).orElse(" "))+
+        String resume = "O valor de R$ %s com taxa de %s\n".formatted(Optional.of(params[0]).orElse(" "), Optional.of(params[1]).orElse(" ")) +
+                "da conta s\n" +
+                "será enviado para (o/a) %s conta %s\n".formatted(Optional.of(params[2]).orElse(" "), Optional.of(params[3]).orElse(" ")) +
+                "no inicio do dia %s\n".formatted(Optional.of(params[4]).orElse(" ")) +
                 "com previssão máxima para ás 17hrs\n";
 
         TextArea area = new TextArea();
@@ -84,6 +86,10 @@ public class MainView extends VerticalLayout {
         area.setWidthFull();
         infoCard.add(area);
         return infoCard;
+    }
+
+    private Optional<List<String>> contatos() {
+        return Optional.of(contatoService.findAll().stream().map(ContatoEntity::getNome).toList());
     }
 
 }

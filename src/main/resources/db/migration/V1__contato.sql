@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS CONTATO_TB (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255),
+    conta BIGINT UNIQUE,
+    agencia BIGINT,
+    banco VARCHAR(255),
+    valor DECIMAL(100, 2),
+    dataCadastro TIMESTAMP
+);

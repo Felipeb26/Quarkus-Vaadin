@@ -1,0 +1,41 @@
+quarkus:
+  devservices:
+    enabled: true
+  http:
+    port: 8081
+    access-log:
+      enabled: true
+      log-to-file: true
+  application:
+    name: BatsWorks
+  log:
+    category:
+      "org.mongodb.driver": DEBUG
+      io.quarkus.mongodb.level: DEBUG
+  banner:
+    enabled: false
+  live-reload:
+    retry-max-attempts: 5
+    retry-interval: 15s
+    url: http://8081/
+  liquibase-mongodb:
+    change-log: db/changelog.xml
+    migrate-at-start: true
+  liquibase:
+    change-log: db/changelog.xml
+    migrate-at-start: true
+  hibernate-orm:
+    batch-fetch-size: 50
+    log:
+      queries-slower-than-ms: 150
+      format-sql: true
+      jdbc-warnings: true
+      sql: true
+  mongodb:
+    devservices:
+      enabled: true
+    database: batsworks
+    connection-string: mongodb+srv://batsworks:Lipe%4026@acesspoint.egw5k9l.mongodb.net/?retryWrites=true&w=majority
+    tsl: true
+    native:
+      log-activity: true

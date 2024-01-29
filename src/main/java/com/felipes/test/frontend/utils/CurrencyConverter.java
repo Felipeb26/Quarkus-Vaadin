@@ -14,14 +14,12 @@ public class CurrencyConverter extends ComponentEvent<TextField> {
         super(textField, fromClient);
         var value = textField.getValue();
         value = value.replaceAll("\\D", "");
-        System.out.println(value);
         DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.getDefault());
         symbols.setDecimalSeparator(',');
         symbols.setGroupingSeparator('.');
-        DecimalFormat decimalFormat = new DecimalFormat("#,###.#", symbols);
+        DecimalFormat decimalFormat = new DecimalFormat("#,###.00", symbols);
         decimalFormat.setMinimumFractionDigits(2);
         decimalFormat.setParseBigDecimal(true);
-
         var valuem = BigDecimal.valueOf(Double.parseDouble(value));
         textField.setValue(decimalFormat.format(valuem));
     }

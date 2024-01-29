@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <preConditions>
+        <runningAs username="batsworks"/>
+    </preConditions>
+
+    <changeSet id="1" author="batsworks" runAlways="false">
+        <ext:insertOne collectionName="contatos_tb">
+            <ext:document>
+                {
+                "agencia": 121,
+                "banco": "nubank",
+                "conta": 445765,
+                "nome": "Felipe",
+                "valor": 0
+                }
+            </ext:document>
+        </ext:insertOne>
+    </changeSet>
+
+    <changeSet id="2" author="batsworks" runAlways="false">
+        <ext:insertOne collectionName="transferencias_tb">
+            <ext:document>
+                {
+                "contaEnvio": "01737368",
+                "contatoNome": "Felipe",
+                "pessoaEnvio": "renan",
+                "valor": 3.23,
+                "contaDestino": 1,
+                "efetuada": false,
+                "dataTransferencia": "2024-01-22 00:00:00",
+                "dataCadastro": { "$now": {} }
+                }
+            </ext:document>
+        </ext:insertOne>
+    </changeSet>
+
+
+</databaseChangeLog>
