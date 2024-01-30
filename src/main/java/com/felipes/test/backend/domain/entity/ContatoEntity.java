@@ -4,6 +4,8 @@ import io.quarkus.mongodb.panache.PanacheMongoEntity;
 import io.quarkus.mongodb.panache.common.MongoEntity;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @Builder
@@ -13,10 +15,10 @@ import lombok.*;
 @MongoEntity(collection = "contatos_tb")
 public class ContatoEntity extends PanacheMongoEntity {
 
-     private String agencia;
+     private Long agencia;
      private String banco;
-     private String conta;
+     private Long conta;
      private String nome;
-     private String valor;
+     private BigDecimal valor;
 
 }

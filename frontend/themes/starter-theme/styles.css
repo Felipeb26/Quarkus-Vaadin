@@ -24,6 +24,18 @@
     left: 0;
 }
 
+.progress-bar{
+    border-radius: 50%;
+    animation: animated 2s linear infinite;
+}
+
+@keyframes animated{
+    to{
+        transform: rotate(1turn);
+    }
+}
+
+
 .main{
     margin: 8rem 0 0 0;
 }
