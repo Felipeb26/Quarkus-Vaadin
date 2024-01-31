@@ -15,12 +15,10 @@ public class ContatoServiceImpl implements ContatoService {
 
     @Inject
     ContatoRepository contatoRepository;
-    private static Integer num = 0;
 
-    @CacheResult(cacheName = "CONTATOS", lockTimeout = 100L)
+    @CacheResult(cacheName = "CONTATOS")
     @Override
     public List<ContatoEntity> findAll() {
-        System.out.println("conta "+ num++);
         return contatoRepository.findAll().stream().toList();
     }
 

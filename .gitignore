@@ -43,3 +43,6 @@ nb-configuration.xml
 /.quarkus/cli/plugins/
 
 *.log
+node_modules
+package-lock.json
+vite.generated.ts

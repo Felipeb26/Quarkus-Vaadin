@@ -1,6 +1,8 @@
 package com.felipes.test.frontend.views;
 
 import com.felipes.test.frontend.HeaderLayout;
+import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEnterEvent;
@@ -12,17 +14,19 @@ import java.util.Collections;
 
 @PageTitle("Login")
 @Route(value = "login", layout = HeaderLayout.class)
+@CssImport("./themes/styles/login-style.css")
 public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     LoginForm loginForm = new LoginForm();
 
     public LoginView() {
         addClassName("login-view");
         setSizeFull();
-        setJustifyContentMode(JustifyContentMode.CENTER);
-        setAlignItems(Alignment.CENTER);
 
         loginForm.setAction("login");
-        add(loginForm);
+        loginForm.getElement().getStyle().set("flex", "1");
+        Span span = new Span("sbjhvbsh");
+
+        add(loginForm, span);
     }
 
     @Override

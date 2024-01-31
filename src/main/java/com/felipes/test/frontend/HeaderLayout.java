@@ -30,7 +30,6 @@ public class HeaderLayout extends AppLayout {
 
         HorizontalLayout header = new HorizontalLayout(toggle, title);
         header.setWidth("100%");
-
         header.addClassName("header");
         header.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
         addToNavbar(header);

@@ -19,6 +19,7 @@ public class TransferenciaEntity extends PanacheMongoEntity {
     private PersonaEntity contaEnvio;
     private BigDecimal valorEnviado;
     private ContatoEntity contatoDestino;
-    private Boolean efetuada;
+    @Builder.Default
+    private Boolean efetuada = false;
     private LocalDate dataTransferencia;
 }

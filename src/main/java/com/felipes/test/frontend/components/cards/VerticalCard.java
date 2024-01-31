@@ -1,17 +1,18 @@
-package com.felipes.test.frontend.components;
+package com.felipes.test.frontend.components.cards;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
-public class HorizontalCard extends HorizontalLayout {
+public class VerticalCard extends VerticalLayout {
 
-    public HorizontalCard() {
+    public VerticalCard() {
         deafultStyle();
         HorizontalLayout layout = new HorizontalLayout();
         add(layout);
     }
 
-    public HorizontalCard(Component... components) {
+    public VerticalCard(Component... components) {
         deafultStyle();
         HorizontalLayout layout = new HorizontalLayout();
         layout.add(components);
@@ -20,9 +21,8 @@ public class HorizontalCard extends HorizontalLayout {
 
 
     private void deafultStyle() {
-        setWidth("95%");
+        setWidthFull();
         addClassName("card");
         setAlignItems(Alignment.BASELINE);
     }
-
 }

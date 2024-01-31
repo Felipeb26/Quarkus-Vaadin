@@ -1,9 +1,9 @@
 package com.felipes.test.backend.domain.entity;
 
-import io.quarkus.mongodb.panache.PanacheMongoEntity;
 import io.quarkus.mongodb.panache.common.MongoEntity;
 import lombok.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Getter
@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @MongoEntity(collection = "contatos_tb")
-public class ContatoEntity extends PanacheMongoEntity {
+public class ContatoEntity extends AbstractEntity<ContatoEntity> implements Serializable {
 
      private Long agencia;
      private String banco;
