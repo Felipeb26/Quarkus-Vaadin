@@ -2,12 +2,11 @@ package com.felipes.test.backend.domain.entity;
 
 import io.quarkus.mongodb.panache.PanacheMongoEntity;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PostPersist;
 import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -15,19 +14,26 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public class AbstractEntity<T> extends PanacheMongoEntity {
 
-    @Setter(AccessLevel.PUBLIC)
     @Getter(AccessLevel.PUBLIC)
     protected LocalDateTime dataCriacao;
-    @Setter(AccessLevel.PUBLIC)
     @Getter(AccessLevel.PUBLIC)
     protected LocalDateTime dataAtualizacao;
+
+
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
+        this.dataAtualizacao = LocalDateTime.now();
+    }
+
+    public void setDataCriacao(LocalDateTime dataCriacao) {
+        this.dataCriacao = LocalDateTime.now();
+    }
 
     @PrePersist
     void prePersist() {
         this.dataCriacao = LocalDateTime.now();
     }
 
-    @PreUpdate
+    @PostPersist
     void preUpdate() {
         this.dataAtualizacao = LocalDateTime.now();
     }

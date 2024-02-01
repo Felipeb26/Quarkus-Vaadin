@@ -15,10 +15,12 @@ import java.math.BigDecimal;
 @MongoEntity(collection = "contatos_tb")
 public class ContatoEntity extends AbstractEntity<ContatoEntity> implements Serializable {
 
-     private Long agencia;
-     private String banco;
-     private Long conta;
-     private String nome;
-     private BigDecimal valor;
+    private String nome;
+    private String cpfCnpj;
+    private String banco;
+    private Long agencia;
+    private Long conta;
+    private BigDecimal valor;
+    private String apelido;
 
 }
